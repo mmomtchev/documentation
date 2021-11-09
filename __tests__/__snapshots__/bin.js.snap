@@ -2024,6 +2024,133 @@ f5 comment
 
 exports[`lint command generates lint output 1`] = `""`;
 
+exports[`polyglot mode 1`] = `
+Array [
+  Object {
+    "augments": Array [],
+    "context": Object {
+      "file": "[path]",
+      "loc": Object {
+        "end": Object {
+          "column": 3,
+          "line": 40,
+        },
+        "start": Object {
+          "column": 1,
+          "line": 35,
+        },
+      },
+    },
+    "description": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "type": "text",
+              "value": "This method moves a hex to a color",
+            },
+          ],
+          "type": "paragraph",
+        },
+      ],
+      "type": "root",
+    },
+    "examples": Array [],
+    "implements": Array [],
+    "loc": Object {
+      "end": Object {
+        "column": 3,
+        "line": 40,
+      },
+      "start": Object {
+        "column": 1,
+        "line": 35,
+      },
+    },
+    "members": Object {
+      "events": Array [],
+      "global": Array [],
+      "inner": Array [],
+      "instance": Array [],
+      "static": Array [],
+    },
+    "name": "hexToUInt32Color",
+    "namespace": "hexToUInt32Color",
+    "params": Array [
+      Object {
+        "lineNumber": 3,
+        "name": "hex",
+        "title": "param",
+        "type": Object {
+          "name": "string",
+          "type": "NameExpression",
+        },
+      },
+    ],
+    "path": Array [
+      Object {
+        "name": "hexToUInt32Color",
+      },
+    ],
+    "properties": Array [],
+    "returns": Array [
+      Object {
+        "description": Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "color",
+                },
+              ],
+              "type": "paragraph",
+            },
+          ],
+          "type": "root",
+        },
+        "title": "returns",
+        "type": Object {
+          "name": "number",
+          "type": "NameExpression",
+        },
+      },
+    ],
+    "sees": Array [],
+    "tags": Array [
+      Object {
+        "description": null,
+        "lineNumber": 2,
+        "name": "hexToUInt32Color",
+        "title": "name",
+      },
+      Object {
+        "description": null,
+        "lineNumber": 3,
+        "name": "hex",
+        "title": "param",
+        "type": Object {
+          "name": "string",
+          "type": "NameExpression",
+        },
+      },
+      Object {
+        "description": "color",
+        "lineNumber": 4,
+        "title": "returns",
+        "type": Object {
+          "name": "number",
+          "type": "NameExpression",
+        },
+      },
+    ],
+    "throws": Array [],
+    "todos": Array [],
+    "yields": Array [],
+  },
+]
+`;
+
 exports[`should use browser resolve 1`] = `
 Array [
   Object {

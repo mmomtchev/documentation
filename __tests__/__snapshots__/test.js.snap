@@ -554,13 +554,13 @@ Array [
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "line": 10,
+          "line": 12,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 0,
-          "line": 8,
+          "line": 10,
         },
       },
     },
@@ -593,13 +593,13 @@ Array [
     "loc": SourceLocation {
       "end": Position {
         "column": 3,
-        "line": 7,
+        "line": 9,
       },
       "filename": undefined,
       "identifierName": undefined,
       "start": Position {
         "column": 0,
-        "line": 5,
+        "line": 7,
       },
     },
     "members": Object {
@@ -13625,11 +13625,11 @@ Array [
       "loc": Object {
         "end": Object {
           "column": 1,
-          "line": 10,
+          "line": 12,
         },
         "start": Object {
           "column": 0,
-          "line": 8,
+          "line": 10,
         },
       },
     },
@@ -13662,11 +13662,11 @@ Array [
     "loc": Object {
       "end": Object {
         "column": 3,
-        "line": 7,
+        "line": 9,
       },
       "start": Object {
         "column": 0,
-        "line": 5,
+        "line": 7,
       },
     },
     "members": Object {
@@ -17153,11 +17153,11 @@ Array [
       "loc": Object {
         "end": Object {
           "column": 1,
-          "line": 10,
+          "line": 12,
         },
         "start": Object {
           "column": 0,
-          "line": 8,
+          "line": 10,
         },
       },
     },
@@ -17190,11 +17190,11 @@ Array [
     "loc": Object {
       "end": Object {
         "column": 3,
-        "line": 7,
+        "line": 9,
       },
       "start": Object {
         "column": 0,
-        "line": 5,
+        "line": 7,
       },
     },
     "members": Object {

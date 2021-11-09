@@ -33,9 +33,12 @@ of lint information intended for human-readable output.
     *   `args.external` **[Array][17]<[string][18]>** a string regex / glob match pattern
         that defines what external modules will be whitelisted and included in the
         generated documentation.
-    *   `args.shallow` **[boolean][20]** whether to avoid dependency parsing
-        even in JavaScript code. (optional, default `false`)
-    *   `args.inferPrivate` **[string][18]?** a valid regular expression string
+    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** parse comments with a regex rather than
+        a proper parser. This enables support of non-JavaScript languages but
+        reduces documentation's ability to infer structure of code. (optional, default `false`)
+    -   `args.shallow` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** whether to avoid dependency parsing
+        even in JavaScript code. With the polyglot option set, this has no effect. (optional, default `false`)
+    -   `args.inferPrivate` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a valid regular expression string
         to infer whether a code element should be private, given its naming structure.
         For instance, you can specify `inferPrivate: '^_'` to automatically treat
         methods named like `_myMethod` as private.
@@ -70,9 +73,12 @@ comments, given a root file as a path.
     *   `args.external` **[Array][17]<[string][18]>** a string regex / glob match pattern
         that defines what external modules will be whitelisted and included in the
         generated documentation.
-    *   `args.shallow` **[boolean][20]** whether to avoid dependency parsing
-        even in JavaScript code. (optional, default `false`)
-    *   `args.order` **[Array][17]<([string][18] | [Object][19])>** optional array that
+    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** parse comments with a regex rather than
+        a proper parser. This enables support of non-JavaScript languages but
+        reduces documentation's ability to infer structure of code. (optional, default `false`)
+    -   `args.shallow` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** whether to avoid dependency parsing
+        even in JavaScript code. With the polyglot option set, this has no effect. (optional, default `false`)
+    -   `args.order` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object))>** optional array that
         defines sorting order of documentation (optional, default `[]`)
     *   `args.access` **[Array][17]<[string][18]>** an array of access levels
         to output in documentation (optional, default `[]`)

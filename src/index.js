@@ -8,6 +8,7 @@ import dependency from './input/dependency.js';
 import shallow from './input/shallow.js';
 import parseJavaScript from './parsers/javascript.js';
 import parseVueScript from './parsers/vue.js';
+import polyglot from './parsers/polyglot.js';
 import github from './github.js';
 import hierarchy from './hierarchy.js';
 import inferName from './infer/name.js';
@@ -75,7 +76,7 @@ export function expandInputs(indexes, config) {
   // Ensure that indexes is an array of strings
   indexes = [].concat(indexes);
 
-  if (config.shallow || config.documentExported) {
+  if (config.polyglot || config.shallow || config.documentExported) {
     return shallow(indexes, config);
   }
 
@@ -89,6 +90,8 @@ function buildInternal(inputsAndConfig) {
   if (!config.access) {
     config.access = ['public', 'undefined', 'protected'];
   }
+
+  const parseFn = config.polyglot ? polyglot : parseJavaScript;
 
   const buildPipeline = pipeline([
     inferName,
@@ -118,7 +121,7 @@ function buildInternal(inputsAndConfig) {
     if (path.extname(sourceFile.file) === '.vue') {
       return parseVueScript(sourceFile, config).map(buildPipeline);
     }
-    return parseJavaScript(sourceFile, config).map(buildPipeline);
+    return parseFn(sourceFile, config).map(buildPipeline);
   }).filter(Boolean);
 
   return filterAccess(
@@ -130,6 +133,8 @@ function buildInternal(inputsAndConfig) {
 function lintInternal(inputsAndConfig) {
   const inputs = inputsAndConfig.inputs;
   const config = inputsAndConfig.config;
+
+  const parseFn = config.polyglot ? polyglot : parseJavaScript;
 
   const lintPipeline = pipeline([
     lintComments,
@@ -150,7 +155,7 @@ function lintInternal(inputsAndConfig) {
       sourceFile.source = fs.readFileSync(sourceFile.file, 'utf8');
     }
 
-    return parseJavaScript(sourceFile, config).map(lintPipeline);
+    return parseFn(sourceFile, config).map(lintPipeline);
   }).filter(Boolean);
 
   return formatLint(hierarchy(extractedComments));
@@ -166,8 +171,11 @@ function lintInternal(inputsAndConfig) {
  * @param {Array<string>} args.external a string regex / glob match pattern
  * that defines what external modules will be whitelisted and included in the
  * generated documentation.
+ * @param {boolean} [args.polyglot=false] parse comments with a regex rather than
+ * a proper parser. This enables support of non-JavaScript languages but
+ * reduces documentation's ability to infer structure of code.
  * @param {boolean} [args.shallow=false] whether to avoid dependency parsing
- * even in JavaScript code.
+ * even in JavaScript code. With the polyglot option set, this has no effect.
  * @param {string} [args.inferPrivate] a valid regular expression string
  * to infer whether a code element should be private, given its naming structure.
  * For instance, you can specify `inferPrivate: '^_'` to automatically treat
@@ -198,8 +206,11 @@ export const lint = (indexes, args) =>
  * @param {Array<string>} args.external a string regex / glob match pattern
  * that defines what external modules will be whitelisted and included in the
  * generated documentation.
+ * @param {boolean} [args.polyglot=false] parse comments with a regex rather than
+ * a proper parser. This enables support of non-JavaScript languages but
+ * reduces documentation's ability to infer structure of code.
  * @param {boolean} [args.shallow=false] whether to avoid dependency parsing
- * even in JavaScript code.
+ * even in JavaScript code. With the polyglot option set, this has no effect.
  * @param {Array<string|Object>} [args.order=[]] optional array that
  * defines sorting order of documentation
  * @param {Array<string>} [args.access=[]] an array of access levels

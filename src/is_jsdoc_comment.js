@@ -18,6 +18,9 @@ export default function isJSDocComment(
 ) {
   const asterisks = comment.value.match(/^(\*+)/);
   return (
-    comment.type === 'CommentBlock' && asterisks && asterisks[1].length === 1
+    (comment.type === 'CommentBlock' || // estree
+      comment.type === 'Block') && // get-comments / traditional
+    asterisks &&
+    asterisks[1].length === 1
   );
 }

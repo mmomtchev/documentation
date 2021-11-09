@@ -45,6 +45,12 @@ export const sharedInputOptions = {
     type: 'array',
     alias: 'pe'
   },
+  polyglot: {
+    type: 'boolean',
+    describe:
+      'polyglot mode turns off dependency resolution and ' +
+      'enables multi-language support. use this to document c++'
+  },
   access: {
     describe:
       'Include only comments with a given access level, out of private, ' +

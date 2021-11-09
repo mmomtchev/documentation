@@ -16,6 +16,8 @@ Options:
   --version                  Show version number                       [boolean]
   --help                     Show help                                 [boolean]
   --theme, -t                specify a theme: this must be a valid theme module
+  --polyglot                 polyglot mode turns off dependency resolution and enables
+                             multi-language support. use this to document c++[boolean]
   --project-name             project name. by default, inferred from
                              package.json
   --project-version          project version. by default, inferred from
