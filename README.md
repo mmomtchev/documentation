@@ -1,3 +1,5 @@
+# polyglot documentation.js
+
 <p align="center">
   <img src="./.github/documentation-js-logo.png" width="650" />
 </p>
@@ -6,11 +8,15 @@
   The documentation system for modern JavaScript
 </p>
 
-[![Circle CI](https://circleci.com/gh/documentationjs/documentation/tree/master.svg?style=shield)](https://circleci.com/gh/documentationjs/documentation/tree/master)
-[![npm version](https://badge.fury.io/js/documentation.svg)](http://badge.fury.io/js/documentation)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/documentationjs/documentation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![David](https://david-dm.org/documentationjs/documentation.svg)](https://david-dm.org/documentationjs/documentation)
-[![Inline docs](http://inch-ci.org/github/documentationjs/documentation.svg?branch=master&style=flat-square)](http://inch-ci.org/github/documentationjs/documentation)
+
+# Fork Notes
+
+This fork restores the C++ support for `documentation.js`.
+
+Its future is still under discussions, it might:
+* get merged into the trunk
+* be transformed into a plugin
+* be published as-is
 
 [:date: Current maintenance status](https://github.com/documentationjs/documentation/wiki/Current-maintenance-status)
 
