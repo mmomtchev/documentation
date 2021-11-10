@@ -31,10 +31,10 @@ test('polyglot', function () {
       yields: [],
       sees: [],
       context: {
-        loc: { end: { column: 3, line: 40 }, start: { column: 1, line: 35 } }
+        loc: { end: { column: 2, line: 40 }, start: { column: 3, line: 35 } }
       },
       description: remarkParse('This method moves a hex to a color'),
-      loc: { end: { column: 3, line: 40 }, start: { column: 1, line: 35 } },
+      loc: { end: { column: 2, line: 40 }, start: { column: 3, line: 35 } },
       name: 'hexToUInt32Color',
       params: [
         {

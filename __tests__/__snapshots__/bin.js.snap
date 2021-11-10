@@ -2032,11 +2032,11 @@ Array [
       "file": "[path]",
       "loc": Object {
         "end": Object {
-          "column": 3,
+          "column": 2,
           "line": 40,
         },
         "start": Object {
-          "column": 1,
+          "column": 3,
           "line": 35,
         },
       },
@@ -2059,11 +2059,11 @@ Array [
     "implements": Array [],
     "loc": Object {
       "end": Object {
-        "column": 3,
+        "column": 2,
         "line": 40,
       },
       "start": Object {
-        "column": 1,
+        "column": 3,
         "line": 35,
       },
     },

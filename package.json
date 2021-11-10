@@ -20,7 +20,6 @@
     "concat-stream": "^2.0.0",
     "diff": "^5.0.0",
     "doctrine-temporary-fork": "2.1.0",
-    "get-comments": "^1.0.1",
     "git-url-parse": "^11.1.2",
     "github-slugger": "1.4.0",
     "glob": "^7.1.2",
