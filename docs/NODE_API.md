@@ -33,9 +33,8 @@ of lint information intended for human-readable output.
     *   `args.external` **[Array][17]<[string][18]>** a string regex / glob match pattern
         that defines what external modules will be whitelisted and included in the
         generated documentation.
-    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** parse comments with a regex rather than
-        a proper parser. This enables support of non-JavaScript languages but
-        reduces documentation's ability to infer structure of code. (optional, default `false`)
+    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** extensions to be parsed in `polyglot` mode, ie, without a proper parser. This enables support of non-JavaScript languages but
+        reduces documentation's ability to infer structure of code. (optional, default `none`)
     -   `args.shallow` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** whether to avoid dependency parsing
         even in JavaScript code. With the polyglot option set, this has no effect. (optional, default `false`)
     -   `args.inferPrivate` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a valid regular expression string
@@ -73,9 +72,8 @@ comments, given a root file as a path.
     *   `args.external` **[Array][17]<[string][18]>** a string regex / glob match pattern
         that defines what external modules will be whitelisted and included in the
         generated documentation.
-    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** parse comments with a regex rather than
-        a proper parser. This enables support of non-JavaScript languages but
-        reduces documentation's ability to infer structure of code. (optional, default `false`)
+    -   `args.polyglot` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** extensions to be parsed in `polyglot` mode, ie, without a proper parser. This enables support of non-JavaScript languages but
+        reduces documentation's ability to infer structure of code. (optional, default `none`)
     -   `args.shallow` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** whether to avoid dependency parsing
         even in JavaScript code. With the polyglot option set, this has no effect. (optional, default `false`)
     -   `args.order` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object))>** optional array that

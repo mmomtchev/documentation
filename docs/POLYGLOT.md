@@ -26,9 +26,8 @@ file extensions: `requireExtension` and `parseExtension`.
 ## Polyglot
 
 Polyglot mode switches documentation.js from running on babylon and [babel](https://babeljs.io/)
-as a JavaScript parser, to using [get-comments](https://github.com/tunnckocore/get-comments).
-This lets it grab comments formatted in the `/** Comment */` style from source
-code that _isn't_ JavaScript, like C++ or CSS code.
+as a JavaScript parser, to using plain RegExp-based matching of comments formatted in the 
+`/** Comment */` style from source code that _isn't_ JavaScript, like C++ or CSS code.
 
 Since documentation.js doesn't _parse_ C++ and lots of other languages (parsing JavaScript is complicated enough!),
 it can't make any of its smart inferences about their source code: it just

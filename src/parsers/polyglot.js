@@ -49,7 +49,7 @@ function getComments(source) {
 
 /**
  * Documentation stream parser: this receives a module-dep item,
- * reads the file, parses the JavaScript, parses the JSDoc, and
+ * reads the file, parses the code, parses the JSDoc, and
  * emits parsed comments.
  * @param sourceFile a chunk of data provided by module-deps
  * @return {Array<Object>} adds to memo

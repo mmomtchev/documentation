@@ -76,11 +76,24 @@ export function expandInputs(indexes, config) {
   // Ensure that indexes is an array of strings
   indexes = [].concat(indexes);
 
-  if (config.polyglot || config.shallow || config.documentExported) {
+  if (config.shallow || config.documentExported) {
     return shallow(indexes, config);
   }
 
-  return dependency(indexes, config);
+  let depsPolyglot = Promise.resolve([]);
+  let idxDeps = indexes;
+  if (config.polyglot) {
+    const idxPolyglot = indexes.filter(idx =>
+      config.polyglot.includes(path.extname(idx).substring(1))
+    );
+    idxDeps = indexes.filter(
+      idx => !config.polyglot.includes(path.extname(idx).substring(1))
+    );
+    depsPolyglot = shallow(idxPolyglot, config);
+  }
+  const depsFull = dependency(idxDeps, config);
+
+  return Promise.all([depsPolyglot, depsFull]).then(([a, b]) => a.concat(b));
 }
 
 function buildInternal(inputsAndConfig) {
@@ -90,8 +103,6 @@ function buildInternal(inputsAndConfig) {
   if (!config.access) {
     config.access = ['public', 'undefined', 'protected'];
   }
-
-  const parseFn = config.polyglot ? polyglot : parseJavaScript;
 
   const buildPipeline = pipeline([
     inferName,
@@ -121,7 +132,13 @@ function buildInternal(inputsAndConfig) {
     if (path.extname(sourceFile.file) === '.vue') {
       return parseVueScript(sourceFile, config).map(buildPipeline);
     }
-    return parseFn(sourceFile, config).map(buildPipeline);
+    if (
+      config.polyglot &&
+      config.polyglot.includes(path.extname(sourceFile.file).substring(1))
+    ) {
+      return polyglot(sourceFile, config).map(buildPipeline);
+    }
+    return parseJavaScript(sourceFile, config).map(buildPipeline);
   }).filter(Boolean);
 
   return filterAccess(

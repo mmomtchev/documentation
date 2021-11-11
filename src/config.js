@@ -1,7 +1,7 @@
 const defaultConfig = {
-  // package.json ignored and don't get project infromation
+  // package.json ignored and don't get project information
   'no-package': false,
-  // Extenstions which by dafault are parse
+  // Extensions which by default are parsed
   parseExtension: ['mjs', 'js', 'jsx', 'es5', 'es6', 'vue', 'ts', 'tsx']
 };
 

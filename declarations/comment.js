@@ -1,7 +1,7 @@
 /* @flow */
 /* eslint no-use-before-define: 0 */
 type DocumentationConfig = {
-  polyglot?: boolean,
+  polyglot?: Array<string>,
   inferPrivate?: string,
   noPackage?: boolean,
   toc?: Array<Object>,

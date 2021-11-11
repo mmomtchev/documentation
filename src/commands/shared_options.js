@@ -46,7 +46,7 @@ export const sharedInputOptions = {
     alias: 'pe'
   },
   polyglot: {
-    type: 'boolean',
+    type: 'array',
     describe:
       'polyglot mode turns off dependency resolution and ' +
       'enables multi-language support. use this to document c++'
