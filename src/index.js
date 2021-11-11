@@ -151,8 +151,6 @@ function lintInternal(inputsAndConfig) {
   const inputs = inputsAndConfig.inputs;
   const config = inputsAndConfig.config;
 
-  const parseFn = config.polyglot ? polyglot : parseJavaScript;
-
   const lintPipeline = pipeline([
     lintComments,
     inferName,
@@ -172,7 +170,14 @@ function lintInternal(inputsAndConfig) {
       sourceFile.source = fs.readFileSync(sourceFile.file, 'utf8');
     }
 
-    return parseFn(sourceFile, config).map(lintPipeline);
+    if (
+      config.polyglot &&
+      config.polyglot.includes(path.extname(sourceFile.file).substring(1))
+    ) {
+      return polyglot(sourceFile, config).map(lintPipeline);
+    }
+
+    return parseJavaScript(sourceFile, config).map(lintPipeline);
   }).filter(Boolean);
 
   return formatLint(hierarchy(extractedComments));
