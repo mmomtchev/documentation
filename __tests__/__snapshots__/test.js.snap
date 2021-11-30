@@ -13625,11 +13625,11 @@ Array [
       "loc": Object {
         "end": Object {
           "column": 1,
-          "line": 12,
+          "line": 10,
         },
         "start": Object {
           "column": 0,
-          "line": 10,
+          "line": 8,
         },
       },
     },
@@ -13662,11 +13662,11 @@ Array [
     "loc": Object {
       "end": Object {
         "column": 3,
-        "line": 9,
+        "line": 7,
       },
       "start": Object {
         "column": 0,
-        "line": 7,
+        "line": 5,
       },
     },
     "members": Object {
@@ -17153,11 +17153,11 @@ Array [
       "loc": Object {
         "end": Object {
           "column": 1,
-          "line": 12,
+          "line": 10,
         },
         "start": Object {
           "column": 0,
-          "line": 10,
+          "line": 8,
         },
       },
     },
@@ -17190,11 +17190,11 @@ Array [
     "loc": Object {
       "end": Object {
         "column": 3,
-        "line": 9,
+        "line": 7,
       },
       "start": Object {
         "column": 0,
-        "line": 7,
+        "line": 5,
       },
     },
     "members": Object {
