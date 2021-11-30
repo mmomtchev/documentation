@@ -2,7 +2,7 @@ const defaultConfig = {
   // package.json ignored and don't get project information
   'no-package': false,
   // Extensions which by default are parsed
-  parseExtension: ['mjs', 'js', 'jsx', 'es5', 'es6', 'vue', 'ts', 'tsx']
+  parseExtension: ['.mjs', '.js', '.jsx', '.es5', '.es6', '.vue', '.ts', '.tsx']
 };
 
 function normalaze(config, global) {
