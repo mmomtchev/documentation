@@ -15,19 +15,36 @@
                 "build",
                 "../node-gdal-async/src/node_gdal.cpp",
                 "../node-gdal-async/lib/default_iterators.js",
-                "-f", "md", "-o", "gdal.md", "--polyglot=cpp"
+                "--plugin=documentation-polyglot",
+                "-f", "md", "-o", "gdal.md", "--config=../node-gdal-async/documentation.yaml"
             ],
             "program": "${workspaceFolder}/bin/documentation.js"
         },
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "jest",
+            "name": "test.js",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "runtimeArgs": [ "--experimental-vm-modules" ],
-            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js"
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "args": [ "__tests__/test.js" ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "bin.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeArgs": [
+                "--experimental-vm-modules"
+            ],
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "args": [
+                "__tests__/bin.js"
+            ]
         }
     ]
 }

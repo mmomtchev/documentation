@@ -2024,7 +2024,7 @@ f5 comment
 
 exports[`lint command generates lint output 1`] = `""`;
 
-exports[`polyglot mode 1`] = `
+exports[`load a plugin 1`] = `
 Array [
   Object {
     "augments": Array [],
@@ -2033,11 +2033,11 @@ Array [
       "loc": Object {
         "end": Object {
           "column": 2,
-          "line": 40,
+          "line": 8,
         },
         "start": Object {
-          "column": 3,
-          "line": 35,
+          "column": 0,
+          "line": 5,
         },
       },
     },
@@ -2047,7 +2047,7 @@ Array [
           "children": Array [
             Object {
               "type": "text",
-              "value": "This method moves a hex to a color",
+              "value": "This function returns the number one.",
             },
           ],
           "type": "paragraph",
@@ -2057,14 +2057,15 @@ Array [
     },
     "examples": Array [],
     "implements": Array [],
+    "kind": "function",
     "loc": Object {
       "end": Object {
-        "column": 2,
-        "line": 40,
+        "column": 3,
+        "line": 4,
       },
       "start": Object {
-        "column": 3,
-        "line": 35,
+        "column": 0,
+        "line": 1,
       },
     },
     "members": Object {
@@ -2074,22 +2075,13 @@ Array [
       "instance": Array [],
       "static": Array [],
     },
-    "name": "hexToUInt32Color",
-    "namespace": "hexToUInt32Color",
-    "params": Array [
-      Object {
-        "lineNumber": 3,
-        "name": "hex",
-        "title": "param",
-        "type": Object {
-          "name": "string",
-          "type": "NameExpression",
-        },
-      },
-    ],
+    "name": "simple.input",
+    "namespace": "simple.input",
+    "params": Array [],
     "path": Array [
       Object {
-        "name": "hexToUInt32Color",
+        "kind": "function",
+        "name": "simple.input",
       },
     ],
     "properties": Array [],
@@ -2101,7 +2093,7 @@ Array [
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "color",
+                  "value": "numberone",
                 },
               ],
               "type": "paragraph",
@@ -2119,24 +2111,8 @@ Array [
     "sees": Array [],
     "tags": Array [
       Object {
-        "description": null,
+        "description": "numberone",
         "lineNumber": 2,
-        "name": "hexToUInt32Color",
-        "title": "name",
-      },
-      Object {
-        "description": null,
-        "lineNumber": 3,
-        "name": "hex",
-        "title": "param",
-        "type": Object {
-          "name": "string",
-          "type": "NameExpression",
-        },
-      },
-      Object {
-        "description": "color",
-        "lineNumber": 4,
         "title": "returns",
         "type": Object {
           "name": "number",
@@ -2146,6 +2122,59 @@ Array [
     ],
     "throws": Array [],
     "todos": Array [],
+    "yields": Array [],
+  },
+  Object {
+    "after": "",
+    "api": false,
+    "augments": Array [],
+    "context": Object {
+      "file": "[path]",
+      "loc": Object {
+        "end": Object {
+          "column": 4,
+          "line": 5,
+        },
+        "start": Object {
+          "column": 1,
+          "line": 5,
+        },
+      },
+    },
+    "end": 19,
+    "examples": Array [],
+    "implements": Array [],
+    "loc": Object {
+      "end": Object {
+        "column": 1,
+        "line": 2,
+      },
+      "start": Object {
+        "column": 1,
+        "line": 0,
+      },
+    },
+    "members": Object {
+      "events": Array [],
+      "global": Array [],
+      "inner": Array [],
+      "instance": Array [],
+      "static": Array [],
+    },
+    "namespace": "",
+    "params": Array [],
+    "path": Array [],
+    "properties": Array [],
+    "returns": Array [],
+    "sees": Array [],
+    "start": 0,
+    "tags": Array [],
+    "throws": Array [],
+    "todos": Array [],
+    "type": "CommentBlock",
+    "value": "*
+ * @method dummy
+ ",
     "yields": Array [],
   },
 ]

@@ -8,7 +8,6 @@ import dependency from './input/dependency.js';
 import shallow from './input/shallow.js';
 import parseJavaScript from './parsers/javascript.js';
 import parseVueScript from './parsers/vue.js';
-import polyglot from './parsers/polyglot.js';
 import github from './github.js';
 import hierarchy from './hierarchy.js';
 import inferName from './infer/name.js';
@@ -30,6 +29,7 @@ import md from './output/markdown.js';
 import json from './output/json.js';
 import createFormatters from './output/util/formatters.js';
 import LinkerStack from './output/util/linker_stack.js';
+import pluginAPI from './plugin_api.js';
 
 /**
  * Build a pipeline of comment handlers.
@@ -80,20 +80,24 @@ export function expandInputs(indexes, config) {
     return shallow(indexes, config);
   }
 
-  let depsPolyglot = Promise.resolve([]);
-  let idxDeps = indexes;
-  if (config.polyglot) {
-    const idxPolyglot = indexes.filter(idx =>
-      config.polyglot.includes(path.extname(idx))
-    );
-    idxDeps = indexes.filter(
-      idx => !config.polyglot.includes(path.extname(idx))
-    );
-    depsPolyglot = shallow(idxPolyglot, config);
+  let idxShallow = [];
+  if (config.plugin) {
+    for (const plugin of config.plugin) {
+      if (config._module[plugin].shallow) {
+        idxShallow = idxShallow.concat(
+          indexes.filter(idx =>
+            config._module[plugin].shallow(idx, config, pluginAPI)
+          )
+        );
+      }
+    }
   }
-  const depsFull = dependency(idxDeps, config);
+  const depsShallow = shallow(idxShallow, config);
 
-  return Promise.all([depsPolyglot, depsFull]).then(([a, b]) => a.concat(b));
+  const idxFull = indexes.filter(idx => !idxShallow.includes(idx));
+  const depsFull = dependency(idxFull, config);
+
+  return Promise.all([depsShallow, depsFull]).then(([a, b]) => a.concat(b));
 }
 
 function buildInternal(inputsAndConfig) {
@@ -132,11 +136,13 @@ function buildInternal(inputsAndConfig) {
     if (path.extname(sourceFile.file) === '.vue') {
       return parseVueScript(sourceFile, config).map(buildPipeline);
     }
-    if (
-      config.polyglot &&
-      config.polyglot.includes(path.extname(sourceFile.file))
-    ) {
-      return polyglot(sourceFile, config).map(buildPipeline);
+    if (config.plugin) {
+      for (const plugin of config.plugin) {
+        if (config._module[plugin].parse) {
+          const r = config._module[plugin].parse(sourceFile, config, pluginAPI);
+          if (r) return r.map(buildPipeline);
+        }
+      }
     }
     return parseJavaScript(sourceFile, config).map(buildPipeline);
   }).filter(Boolean);
@@ -170,11 +176,11 @@ function lintInternal(inputsAndConfig) {
       sourceFile.source = fs.readFileSync(sourceFile.file, 'utf8');
     }
 
-    if (
-      config.polyglot &&
-      config.polyglot.includes(path.extname(sourceFile.file))
-    ) {
-      return polyglot(sourceFile, config).map(lintPipeline);
+    if (config.plugin) {
+      for (const plugin of config.plugin) {
+        const r = config._module[plugin].parse(sourceFile, config, pluginAPI);
+        if (r) return r.map(lintPipeline);
+      }
     }
 
     return parseJavaScript(sourceFile, config).map(lintPipeline);
@@ -228,11 +234,9 @@ export const lint = (indexes, args) =>
  * @param {Array<string>} args.external a string regex / glob match pattern
  * that defines what external modules will be whitelisted and included in the
  * generated documentation.
- * @param {boolean} [args.polyglot=false] parse comments with a regex rather than
- * a proper parser. This enables support of non-JavaScript languages but
- * reduces documentation's ability to infer structure of code.
+ * @param {Array<string>} [args.plugin=[]] load plugins
  * @param {boolean} [args.shallow=false] whether to avoid dependency parsing
- * even in JavaScript code. With the polyglot option set, this has no effect.
+ * even in JavaScript code.
  * @param {Array<string|Object>} [args.order=[]] optional array that
  * defines sorting order of documentation
  * @param {Array<string>} [args.access=[]] an array of access levels

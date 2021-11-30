@@ -3,7 +3,6 @@
 import path from 'path';
 import os from 'os';
 import { exec } from 'child_process';
-import tmp from 'tmp';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 
@@ -60,9 +59,9 @@ test.skip('defaults to parsing package.json main', async function () {
   expect(data.length).toBeTruthy();
 });
 
-test('polyglot mode', async function () {
+test('load a plugin', async function () {
   const data = await documentation([
-    'build fixture/polyglot/blend.cpp --polyglot=.cpp'
+    'build fixture/simple.input.js fixture/plugin.txt --plugin=../src/mock_plugin.js'
   ]);
   expect(normalize(data)).toMatchSnapshot();
 });
@@ -116,17 +115,6 @@ test('extension option', async function () {
   const data = await documentation([
     'build fixture/extension/index.otherextension ' +
       '--requireExtension=otherextension --parseExtension=otherextension'
-  ]);
-  expect(data.length).toBe(1);
-});
-
-/*
- * This tests that parseExtension adds extensions to smartGlob's
- * look through directories.
- */
-test('polyglot + parseExtension + smartGlob', async function () {
-  const data = await documentation([
-    'build fixture/polyglot ' + '--polyglot=.cpp --parseExtension=.cpp'
   ]);
   expect(data.length).toBe(1);
 });
