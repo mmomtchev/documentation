@@ -84,10 +84,10 @@ export function expandInputs(indexes, config) {
   let idxDeps = indexes;
   if (config.polyglot) {
     const idxPolyglot = indexes.filter(idx =>
-      config.polyglot.includes(path.extname(idx).substring(1))
+      config.polyglot.includes(path.extname(idx))
     );
     idxDeps = indexes.filter(
-      idx => !config.polyglot.includes(path.extname(idx).substring(1))
+      idx => !config.polyglot.includes(path.extname(idx))
     );
     depsPolyglot = shallow(idxPolyglot, config);
   }
@@ -134,7 +134,7 @@ function buildInternal(inputsAndConfig) {
     }
     if (
       config.polyglot &&
-      config.polyglot.includes(path.extname(sourceFile.file).substring(1))
+      config.polyglot.includes(path.extname(sourceFile.file))
     ) {
       return polyglot(sourceFile, config).map(buildPipeline);
     }
@@ -172,7 +172,7 @@ function lintInternal(inputsAndConfig) {
 
     if (
       config.polyglot &&
-      config.polyglot.includes(path.extname(sourceFile.file).substring(1))
+      config.polyglot.includes(path.extname(sourceFile.file))
     ) {
       return polyglot(sourceFile, config).map(lintPipeline);
     }

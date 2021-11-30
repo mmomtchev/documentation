@@ -62,7 +62,7 @@ test.skip('defaults to parsing package.json main', async function () {
 
 test('polyglot mode', async function () {
   const data = await documentation([
-    'build fixture/polyglot/blend.cpp --polyglot=cpp'
+    'build fixture/polyglot/blend.cpp --polyglot=.cpp'
   ]);
   expect(normalize(data)).toMatchSnapshot();
 });
@@ -126,7 +126,7 @@ test('extension option', async function () {
  */
 test('polyglot + parseExtension + smartGlob', async function () {
   const data = await documentation([
-    'build fixture/polyglot ' + '--polyglot=cpp --parseExtension=cpp'
+    'build fixture/polyglot ' + '--polyglot=.cpp --parseExtension=.cpp'
   ]);
   expect(data.length).toBe(1);
 });

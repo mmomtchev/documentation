@@ -212,11 +212,7 @@ Array [
       ],
       "type": "root",
     },
-    "errors": Array [
-      Object {
-        "message": "could not determine @name for hierarchy",
-      },
-    ],
+    "errors": Array [],
     "examples": Array [],
     "implements": Array [],
     "kind": "function",
