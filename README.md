@@ -1,3 +1,15 @@
+# **This is a fork of [documentation.js](https://github.com/documentationjs/documentation) which adds a plugin framework.**
+
+**It is pending a merge in the main branch**
+
+**Until then, it can be installed as `@mmomtchev/documentation`**
+
+```
+npm i @mmomtchev/documentation
+```
+
+**Currently the only plugin available is [documentation-polyglot](https://github.com/mmomtchev/documentation-polyglot) which adds non-JS support**
+
 <p align="center">
   <img src="./.github/documentation-js-logo.png" width="650" />
 </p>
