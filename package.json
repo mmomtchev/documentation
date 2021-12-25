@@ -61,7 +61,7 @@
     "husky": "^4.3.8",
     "jest": "^27.3.1",
     "json-schema": "^0.4.0",
-    "lint-staged": "^12.0.2",
+    "lint-staged": "^12.1.4",
     "mock-fs": "^5.1.2",
     "prettier": "^2.4.1",
     "standard-version": "^9.3.2",
@@ -79,7 +79,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:documentationjs/documentation.git"
+    "url": "git+https://github.com/mmomtchev/documentation.git"
   },
   "scripts": {
     "build": "npm run doc",
