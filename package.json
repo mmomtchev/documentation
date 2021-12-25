@@ -79,7 +79,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:documentationjs/documentation.git"
+    "url": "git+https://github.com/mmomtchev/documentation.git"
   },
   "scripts": {
     "build": "npm run doc",
