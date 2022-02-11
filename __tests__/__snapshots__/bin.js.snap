@@ -5,7 +5,7 @@ exports[`--config 1`] = `
 <html lang=\\"en\\">
 <head>
   <meta charset='utf-8'>
-  <title>documentation  | Documentation</title>
+  <title>@mmomtchev/documentation  | Documentation</title>
   <meta name='description' content='a documentation generator'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -17,7 +17,7 @@ exports[`--config 1`] = `
     <div class='flex'>
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>documentation</h3>
+          <h3 class='mb0 no-anchor'>@mmomtchev/documentation</h3>
           <div class='mb1'><code></code></div>
           <input
             placeholder='Filter'
