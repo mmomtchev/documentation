@@ -2426,6 +2426,49 @@ Array [
     "todos": Array [],
     "yields": Array [],
   },
+  Object {
+    "augments": Array [],
+    "context": Object {
+      "file": "[path]",
+      "loc": Object {
+        "end": Object {
+          "column": 4,
+          "line": 5,
+        },
+        "start": Object {
+          "column": 1,
+          "line": 5,
+        },
+      },
+    },
+    "description": "",
+    "examples": Array [],
+    "implements": Array [],
+    "members": Object {
+      "events": Array [],
+      "global": Array [],
+      "inner": Array [],
+      "instance": Array [],
+      "static": Array [],
+    },
+    "namespace": "",
+    "params": Array [],
+    "path": Array [],
+    "properties": Array [],
+    "returns": Array [],
+    "sees": Array [],
+    "tags": Array [
+      Object {
+        "customField": true,
+        "description": "customName",
+        "lineNumber": 1,
+        "title": "customTag",
+      },
+    ],
+    "throws": Array [],
+    "todos": Array [],
+    "yields": Array [],
+  },
 ]
 `;
 

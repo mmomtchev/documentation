@@ -606,10 +606,11 @@ function flattenKindShorthand(result, tag, key) {
  * @param {string} comment input to be parsed
  * @param {Object} loc location of the input
  * @param {Object} context code context of the input
+ * @param {Object} config documentation configuration
  * @returns {Comment} an object conforming to the
  * [documentation schema](https://github.com/documentationjs/api-json)
  */
-export default function parseJSDoc(comment, loc, context) {
+export default function parseJSDoc(comment, loc, context, config) {
   const result = doctrine.parse(comment, {
     // have doctrine itself remove the comment asterisks from content
     unwrap: true,
@@ -672,8 +673,10 @@ export default function parseJSDoc(comment, loc, context) {
       for (let j = 0; j < tag.errors.length; j++) {
         result.errors.push({ message: tag.errors[j] });
       }
+    } else if (config && config.flatteners && config.flatteners[tag.title]) {
+      config.flatteners[tag.title](result, tag, tag.title, config);
     } else if (flatteners[tag.title]) {
-      flatteners[tag.title](result, tag, tag.title);
+      flatteners[tag.title](result, tag, tag.title, config);
     } else {
       result.errors.push({
         message: 'unknown tag @' + tag.title,

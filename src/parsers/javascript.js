@@ -22,7 +22,7 @@ export default function parseJavaScript(data, config) {
   const commentsByNode = new Map();
 
   const ast = parseToAst(data.source, data.file);
-  const addComment = _addComment.bind(null, visited, commentsByNode);
+  const addComment = _addComment.bind(null, visited, commentsByNode, config);
 
   return _.flatMap(
     config.documentExported
@@ -39,6 +39,7 @@ export default function parseJavaScript(data, config) {
 function _addComment(
   visited,
   commentsByNode,
+  config,
   data,
   commentValue,
   commentLoc,
@@ -80,7 +81,7 @@ function _addComment(
         context.code = data.source.substring(parentNode.start, parentNode.end);
       }
     }
-    const comment = parse(commentValue, commentLoc, context);
+    const comment = parse(commentValue, commentLoc, context, config);
     if (includeContext) {
       commentsByNode.set((findTarget(path) || path).node, comment);
 
